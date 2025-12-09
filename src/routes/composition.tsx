@@ -81,7 +81,7 @@ function CompositionCharts() {
             <h2 className="text-xl font-semibold text-white mb-4">
               Destination Countries Distribution ({selectedYear})
             </h2>
-            <div className="h-80">
+            <div className="h-80 bg-white rounded-md p-4">
               <ResponsivePie
                 data={destinationData}
                 margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
@@ -95,14 +95,11 @@ function CompositionCharts() {
                   modifiers: [["darker", 0.2]],
                 }}
                 arcLinkLabelsSkipAngle={10}
-                arcLinkLabelsTextColor="#ffffff"
+                arcLinkLabelsTextColor="#333333"
                 arcLinkLabelsThickness={2}
                 arcLinkLabelsColor={{ from: "color" }}
                 arcLabelsSkipAngle={10}
-                arcLabelsTextColor={{
-                  from: "color",
-                  modifiers: [["darker", 2]],
-                }}
+                arcLabelsTextColor="#333333"
                 legends={[
                   {
                     anchor: "bottom",
@@ -113,7 +110,7 @@ function CompositionCharts() {
                     itemsSpacing: 0,
                     itemWidth: 100,
                     itemHeight: 18,
-                    itemTextColor: "#ffffff",
+                    itemTextColor: "#333333",
                     itemDirection: "left-to-right",
                     itemOpacity: 1,
                     symbolSize: 18,
@@ -137,7 +134,7 @@ function CompositionCharts() {
             <h2 className="text-xl font-semibold text-white mb-4">
               Age Groups Distribution ({selectedYear})
             </h2>
-            <div className="h-80">
+            <div className="h-80 bg-white rounded-md p-4">
               <ResponsivePie
                 data={ageGroupData}
                 margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
@@ -151,14 +148,11 @@ function CompositionCharts() {
                   modifiers: [["darker", 0.2]],
                 }}
                 arcLinkLabelsSkipAngle={10}
-                arcLinkLabelsTextColor="#ffffff"
+                arcLinkLabelsTextColor="#333333"
                 arcLinkLabelsThickness={2}
                 arcLinkLabelsColor={{ from: "color" }}
                 arcLabelsSkipAngle={10}
-                arcLabelsTextColor={{
-                  from: "color",
-                  modifiers: [["darker", 2]],
-                }}
+                arcLabelsTextColor="#333333"
                 legends={[
                   {
                     anchor: "bottom",
@@ -169,7 +163,7 @@ function CompositionCharts() {
                     itemsSpacing: 0,
                     itemWidth: 100,
                     itemHeight: 18,
-                    itemTextColor: "#ffffff",
+                    itemTextColor: "#333333",
                     itemDirection: "left-to-right",
                     itemOpacity: 1,
                     symbolSize: 18,
@@ -193,7 +187,7 @@ function CompositionCharts() {
             <h2 className="text-xl font-semibold text-white mb-4">
               Civil Status Distribution ({selectedYear})
             </h2>
-            <div className="h-80">
+            <div className="h-80 bg-white rounded-md p-4">
               <ResponsivePie
                 data={civilStatusData}
                 margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
@@ -207,14 +201,11 @@ function CompositionCharts() {
                   modifiers: [["darker", 0.2]],
                 }}
                 arcLinkLabelsSkipAngle={10}
-                arcLinkLabelsTextColor="#ffffff"
+                arcLinkLabelsTextColor="#333333"
                 arcLinkLabelsThickness={2}
                 arcLinkLabelsColor={{ from: "color" }}
                 arcLabelsSkipAngle={10}
-                arcLabelsTextColor={{
-                  from: "color",
-                  modifiers: [["darker", 2]],
-                }}
+                arcLabelsTextColor="#333333"
                 legends={[
                   {
                     anchor: "bottom",
@@ -225,7 +216,7 @@ function CompositionCharts() {
                     itemsSpacing: 0,
                     itemWidth: 100,
                     itemHeight: 18,
-                    itemTextColor: "#ffffff",
+                    itemTextColor: "#333333",
                     itemDirection: "left-to-right",
                     itemOpacity: 1,
                     symbolSize: 18,

@@ -52,37 +52,7 @@ function DistributionCharts() {
           </p>
         </div>
 
-        {/* Filters */}
-        <div className="bg-secondary rounded-lg p-6 border border-gray-700 mb-6">
-          <h2 className="text-xl font-semibold text-white mb-4">Filters</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Year
-              </label>
-              <select
-                value={selectedYear}
-                onChange={(e) => setSelectedYear(Number(e.target.value))}
-                className="w-full p-3 border border-gray-600 rounded-lg bg-primary text-white focus:ring-highlights focus:border-highlights"
-              >
-                {years.map((year) => (
-                  <option
-                    key={year}
-                    value={year}
-                    className="bg-primary text-white"
-                  >
-                    {year}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="flex items-end">
-              <p className="text-sm text-gray-400">
-                Select a year to view the country distribution for that period.
-              </p>
-            </div>
-          </div>
-        </div>
+        {/* Filters removed per design request */}
 
         {/* Charts Grid */}
         <div className="grid grid-cols-1 gap-6 mb-6">
@@ -91,7 +61,7 @@ function DistributionCharts() {
             <h2 className="text-xl font-semibold text-white mb-4">
               Country Distribution Density Over Time
             </h2>
-            <div className="h-96">
+            <div className="bg-white rounded-md p-4 h-96">
               <ResponsiveLine
                 data={countryDensityData}
                 margin={{ top: 50, right: 180, bottom: 70, left: 80 }}

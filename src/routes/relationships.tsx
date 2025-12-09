@@ -109,37 +109,33 @@ function RelationshipCharts() {
         {/* Filters */}
         <div className="bg-secondary rounded-lg p-6 border border-gray-700 mb-6">
           <h2 className="text-xl font-semibold text-white mb-4">Filters</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Relationship Type
-              </label>
-              <select
-                value={selectedMetric}
-                onChange={(e) => setSelectedMetric(e.target.value)}
-                className="w-full p-3 border border-gray-600 rounded-lg bg-primary text-white focus:ring-highlights focus:border-highlights"
-              >
-                <option value="age-income">Age vs Income</option>
-                <option value="education-income">Education vs Income</option>
-                <option value="distance-emigrants">
-                  Distance vs Emigrants
-                </option>
-              </select>
-            </div>
-            <div className="flex items-end">
-              <div className="text-sm text-gray-400">
-                <p className="mb-1">
-                  Select a relationship type to visualize the correlation
-                  between variables.
-                </p>
-                {isValidData && (
-                  <p className="text-highlights font-semibold">
-                    📊 {totalPoints} data point{totalPoints !== 1 ? "s" : ""}{" "}
-                    available
-                  </p>
-                )}
-              </div>
-            </div>
+          <div className="flex flex-wrap gap-4 items-center">
+            <button
+              onClick={() => setSelectedMetric("age-income")}
+              className={`px-6 py-2 rounded-lg font-semibold transition ${
+                selectedMetric === "age-income"
+                  ? "bg-highlights text-white"
+                  : "bg-primary text-gray-300 border border-gray-600 hover:border-highlights"
+              }`}
+            >
+              Age vs Income
+            </button>
+            <button
+              onClick={() => setSelectedMetric("distance-emigrants")}
+              className={`px-6 py-2 rounded-lg font-semibold transition ${
+                selectedMetric === "distance-emigrants"
+                  ? "bg-highlights text-white"
+                  : "bg-primary text-gray-300 border border-gray-600 hover:border-highlights"
+              }`}
+            >
+              Distance vs Emigrants
+            </button>
+            {isValidData && (
+              <p className="text-highlights font-semibold text-sm ml-auto">
+                📊 {totalPoints} data point{totalPoints !== 1 ? "s" : ""}{" "}
+                available
+              </p>
+            )}
           </div>
         </div>
 
@@ -152,7 +148,7 @@ function RelationshipCharts() {
             {selectedMetric === "distance-emigrants" &&
               "Distance vs Emigrants Relationship"}
           </h2>
-          <div className="h-96">
+          <div className="bg-white rounded-md p-4 h-96">
             {isValidData ? (
               <ResponsiveScatterPlot
                 data={currentData}

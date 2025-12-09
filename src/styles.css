@@ -97,6 +97,27 @@ svg text {
   background-color: #d95f78 !important; /* slightly darker on hover */
 }
 
+/* Tooltip/Chart popups should display white text on dark backgrounds.
+   These selectors target Recharts, Nivo and custom tooltip wrappers and
+   override the universal dark-gray text rule for those containers. */
+.recharts-default-tooltip,
+.recharts-tooltip-wrapper,
+.chart-tooltip,
+.tooltip,
+.rv-tooltip,
+.recharts-tooltip-wrapper *,
+.chart-tooltip *,
+.tooltip * {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* Some components use the bg-gray-800 class for dark tooltip backgrounds.
+   Ensure those containers keep white text for readability */
+.bg-gray-800, .bg-gray-800 * {
+  color: #ffffff !important;
+}
+
 /* Scrollbar styles */
 ::-webkit-scrollbar {
   width: 15px;

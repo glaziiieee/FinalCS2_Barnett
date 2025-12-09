@@ -46,20 +46,40 @@ const CandlestickShape = (props: any) => {
 
   const heightScale = height / range;
 
-  // Calculate Y positions
-  const highY = y;
-  const lowY = y + height;
-  const openY = y + (high - open) * heightScale;
-  const closeY = y + (high - close) * heightScale;
+  // Raw Y positions (before clamping)
+  let highY = y;
+  let lowY = y + height;
+  let openY = y + (high - open) * heightScale;
+  let closeY = y + (high - close) * heightScale;
+
+  // Prevent drawing elements beyond the plotting area (so they don't overlap the x-axis)
+  const padding = 2; // pixels of padding from chart edges
+  const minY = y + padding;
+  const maxY = y + height - padding;
+
+  const clamp = (val: number) => Math.max(minY, Math.min(maxY, val));
+
+  highY = clamp(highY);
+  lowY = clamp(lowY);
+  openY = clamp(openY);
+  closeY = clamp(closeY);
 
   const bodyTop = Math.min(openY, closeY);
-  const bodyHeight = Math.abs(openY - closeY);
+  let bodyHeight = Math.abs(openY - closeY);
+  // Ensure minimum visible body height
+  if (bodyHeight < 2) bodyHeight = 2;
+
+  // If the body would spill past the bottom, shrink it to stay inside
+  if (bodyTop + bodyHeight > maxY) {
+    bodyHeight = Math.max(2, maxY - bodyTop);
+  }
+
   // Make the body width 50% of the available width to prevent overlap
   const bodyWidth = width * 0.5;
 
   return (
     <g>
-      {/* Wick line - from high to low */}
+      {/* Wick line - from high to low (clamped) */}
       <line
         x1={centerX}
         y1={highY}
@@ -69,12 +89,12 @@ const CandlestickShape = (props: any) => {
         strokeWidth={1.5}
       />
 
-      {/* Body - from open to close */}
+      {/* Body - from open to close (clamped, with minimum height) */}
       <rect
         x={centerX - bodyWidth / 2}
         y={bodyTop}
         width={bodyWidth}
-        height={Math.max(bodyHeight, 2)}
+        height={bodyHeight}
         fill={color}
         stroke={color}
         strokeWidth={1}
@@ -218,7 +238,7 @@ function TrendAnalysis() {
             <h2 className="text-xl font-semibold text-white mb-4">
               Age Group Trends - {selectedAgeGroup} (Candlestick)
             </h2>
-            <div style={{ width: "100%", height: 500, minHeight: 500 }}>
+            <div className="bg-white rounded-md p-4" style={{ width: "100%", height: 500, minHeight: 500 }}>
               <ResponsiveContainer width="100%" height={500}>
                 <ComposedChart
                   data={candlestickData}
